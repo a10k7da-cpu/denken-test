@@ -5,7 +5,7 @@
             "subject": "理論",
             "question": "オームの法則で、電圧V、電流I、抵抗Rの関係は？",
             "answer": "V = IR",
-            "explanation": "基本中の基本です。電圧は電流と抵抗の積に等しくなります。",
+            "explanation": "電圧は電流と抵抗の積に等しくなります。",
             "options": [
                 "V = IR",
                 "V = I/R",
@@ -17,7 +17,7 @@
         {
             "id": "T002",
             "subject": "理論",
-            "question": "コンデンサの静電容量Cに蓄えられるエネルギーWの式は？",
+            "question": "静電容量Cに蓄えられるエネルギーWの式は？",
             "answer": "W = (1/2)CV^2",
             "explanation": "エネルギーは電圧の2乗に比例します。",
             "options": [
@@ -32,7 +32,7 @@
             "id": "T003",
             "subject": "理論",
             "question": "キルヒホッフの第一法則（電流則）とは？",
-            "answer": "回路の分岐点に流れ込む電流の和は、流れ出る電流の和に等しい",
+            "answer": "流れ込む電流の和は流れ出る電流の和に等しい",
             "explanation": "電荷保存の法則に基づいています。",
             "options": [
                 "流れ込む電流の和は流れ出る電流の和に等しい",
@@ -43,39 +43,151 @@
             "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
+            "id": "T004",
+            "subject": "理論",
+            "question": "ブリッジ回路の平衡条件（対辺の抵抗の積）は？",
+            "answer": "対角線上の抵抗の積が等しい",
+            "explanation": "検流計に電流が流れない状態です。",
+            "options": [
+                "対角線上の抵抗の積が等しい",
+                "隣り合う抵抗の積が等しい",
+                "全ての抵抗が等しい",
+                "電圧が全て等しい"
+            ],
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "T005",
+            "subject": "理論",
+            "question": "磁束密度B、電流I、長さL、角度θの導体にかかる力の大きさFは？",
+            "answer": "F = BIL sinθ",
+            "explanation": "フレミングの左手の法則に関連します。",
+            "options": [
+                "F = BIL sinθ",
+                "F = BIL cosθ",
+                "F = B/IL",
+                "F = I/BL"
+            ],
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "T006",
+            "subject": "理論",
+            "question": "インダクタンスLのコイルに流れる電流Iがt秒間にΔI変化した時の誘導起電力eは？",
+            "answer": "e = -L(ΔI/Δt)",
+            "explanation": "レンツの法則により逆方向の起電力が発生します。",
+            "options": [
+                "e = -L(ΔI/Δt)",
+                "e = LΔt",
+                "e = L/I",
+                "e = I^2L"
+            ],
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "T007",
+            "subject": "理論",
+            "question": "正弦波交流の波高率（クレストファクタ）を求める式は？",
+            "answer": "最大値 / 実効値",
+            "explanation": "正弦波の場合は√2(1.41)になります。",
+            "options": [
+                "最大値 / 実効値",
+                "実効値 / 平均値",
+                "最大値 / 平均値",
+                "平均値 / 最大値"
+            ],
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "T008",
+            "subject": "理論",
+            "question": "交流回路のインピーダンスZにおいて、RとjXの合成は？",
+            "answer": "Z = R + jX",
+            "explanation": "複素数で表されます。",
+            "options": [
+                "Z = R + jX",
+                "Z = R - jX",
+                "Z = RX",
+                "Z = R/X"
+            ],
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
             "id": "P001",
             "subject": "電力",
-            "question": "汽力発電の熱サイクルで、最も基本的なサイクルは？",
-            "answer": "ランキンサイクル",
-            "explanation": "加熱、膨張、冷却、圧縮のプロセスを繰り返します。",
+            "question": "汽力発電の熱サイクルで、再熱器を用いる目的は？",
+            "answer": "タービンの湿分減少と効率向上",
+            "explanation": "膨張途中の蒸気を再度加熱します。",
             "options": [
-                "カルノーサイクル",
-                "ランキンサイクル",
-                "オットーサイクル",
-                "ディーゼルサイクル"
+                "タービンの湿分減少と効率向上",
+                "給水の加熱",
+                "空気の予熱",
+                "復水器の冷却"
             ],
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
             "id": "P002",
             "subject": "電力",
-            "question": "送電線のフェランチ効果とは？",
-            "answer": "受電端電圧が送電端電圧より高くなる現象",
-            "explanation": "軽負荷時に充電電流の影響で発生します。",
+            "question": "水力発電の出力P[kW]、流量Q[m3/s]、落差H[m]、効率ηの関係は？",
+            "answer": "P = 9.8QHη",
+            "explanation": "重力加速度9.8を用います。",
             "options": [
-                "電圧が下がる現象",
-                "電圧が上がる現象",
-                "電流が止まる現象",
-                "周波数が変わる現象"
+                "P = 9.8QHη",
+                "P = QH/9.8",
+                "P = 1.2QHη",
+                "P = 10QH"
+            ],
+            "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
+        },
+        {
+            "id": "P003",
+            "subject": "電力",
+            "question": "電力系統のフェランチ効果が発生しやすい条件は？",
+            "answer": "軽負荷時の長距離送電線",
+            "explanation": "受電端の電圧が送電端より高くなります。",
+            "options": [
+                "軽負荷時の長距離送電線",
+                "重負荷時の短距離送電線",
+                "故障発生時",
+                "落雷時"
+            ],
+            "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
+        },
+        {
+            "id": "P004",
+            "subject": "電力",
+            "question": "中性点接地方式のうち、通信線への誘導障害が最も少ないのは？",
+            "answer": "消弧リアクトル接地方式",
+            "explanation": "地絡電流を制限します。",
+            "options": [
+                "直接接地方式",
+                "消弧リアクトル接地方式",
+                "抵抗接地方式",
+                "非接地方式"
+            ],
+            "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
+        },
+        {
+            "id": "P005",
+            "subject": "電力",
+            "question": "変電所の避雷器の役割は？",
+            "answer": "異常電圧を制限し、制限電圧以下に抑える",
+            "explanation": "雷サージなどから機器を保護します。",
+            "options": [
+                "異常電圧を制限し、制限電圧以下に抑える",
+                "停電を防ぐ",
+                "周波数を安定させる",
+                "力率を改善する"
             ],
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
             "id": "M001",
             "subject": "機械",
-            "question": "誘導電動機の同期速度Nsを求める式は？（P:極数, f:周波数）",
+            "question": "同期電動機の同期速度Nsを求める式は？",
             "answer": "Ns = 120f / P",
-            "explanation": "回転磁界の速度を決定する重要な式です。",
+            "explanation": "f:周波数、P:極数です。",
             "options": [
                 "Ns = 120f / P",
                 "Ns = 60f / P",
@@ -87,105 +199,147 @@
         {
             "id": "M002",
             "subject": "機械",
-            "question": "変圧器の鉄損の主な内訳は？",
-            "answer": "ヒステリシス損と渦電流損",
-            "explanation": "無負荷損の大部分を占めます。",
+            "question": "変圧器の百分率インピーダンスに関わる損失は？",
+            "answer": "インピーダンスワット（全負荷銅損）",
+            "explanation": "定格電流を流した時の損失です。",
             "options": [
-                "銅損と漂遊負荷損",
-                "ヒステリシス損と渦電流損",
-                "機械損と風損",
-                "誘電損と抵抗損"
+                "無負荷損",
+                "インピーダンスワット（全負荷銅損）",
+                "鉄損",
+                "漂遊負荷損"
+            ],
+            "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
+        },
+        {
+            "id": "M003",
+            "subject": "機械",
+            "question": "直流電動機の回転の向きを逆にする方法は？",
+            "answer": "界磁電流または電機子電流のどちらか一方を逆にする",
+            "explanation": "両方逆にすると向きは変わりません。",
+            "options": [
+                "界磁電流または電機子電流のどちらか一方を逆にする",
+                "電源の極性を入れ替える",
+                "極数を増やす",
+                "回転数を上げる"
+            ],
+            "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
+        },
+        {
+            "id": "M004",
+            "subject": "機械",
+            "question": "パワーエレクトロニクスにおけるインバータの機能は？",
+            "answer": "直流を交流に変換する",
+            "explanation": "VVVF制御などに用いられます。",
+            "options": [
+                "交流を直流に変換する",
+                "直流を交流に変換する",
+                "電圧を上げる",
+                "周波数を下げる"
             ],
             "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
         },
         {
             "id": "L001",
             "subject": "法規",
-            "question": "電気工事士法において、第一種電気工事士の免状交付を受けるための実務経験期間は？",
-            "answer": "3年以上（試験合格後の場合）",
-            "explanation": "法改正により現在は3年以上となっています。",
+            "question": "電気工事士法において、第二種電気工事士ができる作業は？",
+            "answer": "一般用電気工作物の電気工事",
+            "explanation": "自家用は第一種が必要です。",
             "options": [
-                "1年以上",
-                "3年以上",
-                "5年以上",
-                "10年以上"
+                "一般用電気工作物の電気工事",
+                "全ての工作物の電気工事",
+                "500kW以上の工事",
+                "高圧受電設備の工事"
+            ],
+            "url": "https://denken-ou.com/category/houki-mondaiichiran/"
+        },
+        {
+            "id": "L002",
+            "subject": "法規",
+            "question": "電気設備技術基準における「低圧」の区分（直流）は？",
+            "answer": "750V以下",
+            "explanation": "交流は600V以下です。",
+            "options": [
+                "600V以下",
+                "750V以下",
+                "7000V以下",
+                "1000V以下"
             ],
             "url": "https://denken-ou.com/category/houki-mondaiichiran/"
         }
     ],
     "learning_content": [
         {
-            "id": "L_T001",
+            "id": "L_YOUTUBE_01",
             "subject": "理論",
-            "title": "直流回路：直列と並列",
-            "body": "直列連接では抵抗の和が合成抵抗（R=R1+R2）になり、並列連接では逆数の和（1/R = 1/R1 + 1/R2）になります。",
-            "example": "2Ωと3Ωが直列なら5Ω。並列なら 1.2Ω です。",
-            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+            "title": "【YouTube】理論の基礎（電験合格チャンネル）",
+            "body": "電験三種の理論科目は、電気の基礎知識である「直流回路」「静電気」「磁気」「交流回路」などが中心です。特にオームの法則とキルヒホッフの法則は全ての基礎になります。",
+            "example": "動画では黒板を使った丁寧な解説を視聴できます。",
+            "url": "https://www.youtube.com/playlist?list=PLW_SIsunmCly060G_wzE0nN3YJcTzHj07"
         },
         {
-            "id": "L_T002",
+            "id": "L_YOUTUBE_02",
             "subject": "理論",
-            "title": "交流の基礎：実効値",
-            "body": "交流の正弦波において、最大値Vmと実効値Vの関係は V = Vm / √2 です。家庭用の100Vは実効値です。",
-            "example": "100Vの最大値は約141Vです。",
-            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+            "title": "【YouTube】アニメでわかる電験（Aki塾長）",
+            "body": "数式だけでは理解しにくい電子の動きや磁界の広がりを、高品質なアニメーションで視覚的に理解することができます。",
+            "example": "コンデンサの充電・放電の仕組みをアニメーションで確認しましょう。",
+            "url": "https://www.youtube.com/channel/UCdgfcvbR_6Kz_Ibg0X8wY4A"
         },
         {
-            "id": "L_P001",
+            "id": "L_PAST_01",
             "subject": "電力",
-            "title": "火力発電：ボイラの構成",
-            "body": "ボイラは、過熱器、再熱器、節炭器、空気予熱器などで構成され、熱効率を高める工夫がされています。",
-            "example": "節炭器は給水を予熱し、空気予熱器は燃焼空気を予熱します。",
+            "title": "電力科目の頻出：送電ロスと力率改善",
+            "body": "電力系統では、負荷の力率が悪いと無効電流が増え、送電損失が増加します。これを改善するために電力用コンデンサを設置します。",
+            "example": "損失係数計算 problem 等が過去問によく出ます。",
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
-            "id": "L_M001",
+            "id": "L_YOUTUBE_03",
             "subject": "機械",
-            "title": "直流機：起電力の公式",
-            "body": "直流発電機の起電力 E = (pZ/60a)ΦN [V] です。ここで p:極数, Z:導体数, a:並列回路数, Φ:磁束, N:回転数です。",
-            "example": "磁束Φを増やすか回転数Nを増やせば起電圧は上がります。",
-            "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
-        },
-        {
-            "id": "L_L001",
-            "subject": "法規",
-            "title": "電気事業法：保安規程",
-            "body": "事業用電気工作物の設置者は、自己責任において保安を確保するため、保安規程を定め、届け出る義務があります。",
-            "example": "自家用電気工作物（ビルや工場）のオーナーは保安規程を作る必要があります。",
-            "url": "https://denken-ou.com/category/houki-mondaiichiran/"
+            "title": "【YouTube】四機（直流機・誘導機・同期機・変圧器）の解説",
+            "body": "機械科目の山場である四機の構造と原理について、動画で視覚的に学ぶことができます。",
+            "example": "回転磁界の発生原理を動画でイメージしましょう。",
+            "url": "https://www.youtube.com/playlist?list=PLW_SIsunmClxz8O2v0K5jT6B7S_Aog19p"
         }
     ],
     "formulas": [
         {
             "id": "F_T001",
             "subject": "理論",
-            "title": "電気抵抗の公式",
-            "formula": "R = ρ × (L / A)",
-            "desc": "R:抵抗[Ω], ρ:抵抗率[Ωm], L:長さ[m], A:断面積[m2]",
+            "title": "合成抵抗（並列）",
+            "formula": "R = (R1 * R2) / (R1 + R2)",
+            "desc": "和分の積。2つの抵抗の並列計算に多用されます。",
             "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "F_T002",
             "subject": "理論",
-            "title": "静電エネルギー",
-            "formula": "W = (1/2)CV^2",
-            "desc": "W:エネルギー[J], C:静電容量[F], V:電圧[V]",
+            "title": "コンデンサの静電容量",
+            "formula": "C = ε * (S / d)",
+            "desc": "ε:誘電率, S:面積, d:間隔。極板間の関係です。",
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "F_T003",
+            "subject": "理論",
+            "title": "共振周波数",
+            "formula": "f = 1 / (2π * √(LC))",
+            "desc": "L:インダクタンス, C:静電容量。直列・並列共振で共通です。",
             "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "F_P001",
             "subject": "電力",
-            "title": "三相交流の電力",
-            "formula": "P = √3 × V × I × cosθ",
-            "desc": "P:有効電力[W], V:線間電圧[V], I:線路電流[A], cosθ:力率",
+            "title": "電圧降下（簡易式）",
+            "formula": "v = √3 * I * (R cosθ + X sinθ)",
+            "desc": "三相三線式の電圧降下を求める際に使用します。",
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
             "id": "F_M001",
             "subject": "機械",
-            "title": "同期速度",
-            "formula": "Ns = 120f / P",
-            "desc": "Ns:同期速度[min-1], f:周波数[Hz], P:磁極数",
+            "title": "滑り(s)",
+            "formula": "s = (Ns - N) / Ns",
+            "desc": "Ns:同期速度, N:回転速度。誘導機の基礎です。",
             "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
         }
     ]
