@@ -7,9 +7,11 @@ let currentMode = ""; // 'drill', 'learn', 'quiz', 'flash'
 
 // --- ユーティリティ ---
 const $ = (id) => document.getElementById(id);
+
 const showView = (id) => {
     document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
-    $(id).classList.remove('hidden');
+    const target = $(id);
+    if (target) target.classList.remove('hidden');
 };
 
 // --- LocalStorage ---
@@ -23,7 +25,11 @@ async function init() {
     try {
         const res = await fetch('data.json');
         db = await res.json();
-    } catch (e) { console.error("Load failed", e); }
+        console.log("Database loaded:", db);
+    } catch (e) {
+        console.error("Load failed", e);
+        alert("データの読み込みに失敗しました。サーバーを確認してください。");
+    }
 }
 
 // --- Home 画面アクション ---
@@ -52,8 +58,12 @@ $('start-flashcard').onclick = () => startFlashcardMode();
 function startDrill() {
     currentMode = 'quiz';
     activeQueue = [...db.questions].sort(() => Math.random() - 0.5);
+    if (activeQueue.length === 0) return alert("問題がありません");
     currentIndex = 0;
     showView('learning-view');
+    // 重要: 各コンテナの表示状態をリセット
+    $('quiz-container').classList.remove('hidden');
+    $('flashcard-container').classList.add('hidden');
     renderQuiz();
 }
 
@@ -73,7 +83,7 @@ function renderLearnContent() {
     $('learn-body').textContent = item.body;
     $('learn-example').textContent = item.example;
     $('learn-url').href = item.url || "#";
-    $('learn-url').classList.toggle('hidden', !item.url);
+    $('learn-url').style.display = item.url ? 'block' : 'none';
 }
 
 $('btn-learn-next').onclick = () => {
@@ -122,13 +132,14 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     };
 });
 
-// 4. クイズ/フラッシュカード (既存ロジックの調整)
+// 4. クイズ/フラッシュカード
 function startQuizMode() {
     currentMode = 'quiz';
     activeQueue = db.questions.filter(q => q.subject === currentSubject);
+    if (activeQueue.length === 0) return alert("まだ問題がありません");
     currentIndex = 0;
     showView('learning-view');
-    $('quiz-container').classList.remove('hidden');
+    $('quiz-container').classList.remove('hidden'); // 明示的に表示
     $('flashcard-container').classList.add('hidden');
     renderQuiz();
 }
@@ -150,20 +161,21 @@ function renderQuiz() {
                 div.classList.add('correct');
             } else {
                 div.classList.add('wrong');
-                // 実際の実装ではここで苦手リストへの追加などを行う
             }
 
             $('explanation-text').textContent = q.explanation;
             $('quiz-url').href = q.url || "#";
-            if (q.url) {
-                $('quiz-url').classList.remove('hidden');
-            } else {
-                $('quiz-url').classList.add('hidden');
-            }
+            $('quiz-url').style.display = q.url ? 'block' : 'none';
             $('quiz-explanation').classList.remove('hidden');
         };
         $('quiz-options').appendChild(div);
     });
+    updateProgress();
+}
+
+function updateProgress() {
+    const percent = Math.floor((currentIndex / activeQueue.length) * 100);
+    $('progress-fill').style.width = `${percent}%`;
 }
 
 $('btn-next').onclick = () => {
@@ -171,6 +183,7 @@ $('btn-next').onclick = () => {
     if (currentIndex < activeQueue.length) {
         renderQuiz();
     } else {
+        alert("セッション終了です！");
         showView('home-view');
     }
 };
@@ -178,10 +191,11 @@ $('btn-next').onclick = () => {
 function startFlashcardMode() {
     currentMode = 'flash';
     activeQueue = db.questions.filter(q => q.subject === currentSubject);
+    if (activeQueue.length === 0) return alert("問題がありません");
     currentIndex = 0;
     showView('learning-view');
     $('quiz-container').classList.add('hidden');
-    $('flashcard-container').classList.remove('hidden');
+    $('flashcard-container').classList.remove('hidden'); // 明示的に表示
     renderFlashcard();
 }
 
@@ -190,7 +204,9 @@ function renderFlashcard() {
     $('card-q').textContent = q.question;
     $('card-a').textContent = q.answer;
     $('card-url').href = q.url || "#";
+    $('card-url').style.display = q.url ? 'inline' : 'none';
     $('main-card').classList.remove('is-flipped');
+    updateProgress();
 }
 
 // 初期化

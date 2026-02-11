@@ -3,48 +3,156 @@
         {
             "id": "T001",
             "subject": "理論",
-            "question": "オームの法則の式は？",
+            "question": "オームの法則で、電圧V、電流I、抵抗Rの関係は？",
             "answer": "V = IR",
-            "explanation": "電圧(V) = 電流(I) × 抵抗(R) という関係を表します。",
+            "explanation": "基本中の基本です。電圧は電流と抵抗の積に等しくなります。",
             "options": [
                 "V = IR",
                 "V = I/R",
                 "V = I^2R",
                 "V = R/I"
             ],
-            "url": "https://denken-ou.com/riron-ohm/"
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "T002",
             "subject": "理論",
             "question": "コンデンサの静電容量Cに蓄えられるエネルギーWの式は？",
             "answer": "W = (1/2)CV^2",
-            "explanation": "電荷Q=CVを代入すると、W = (1/2)QV とも書けます。",
+            "explanation": "エネルギーは電圧の2乗に比例します。",
             "options": [
                 "W = CV",
                 "W = (1/2)CV^2",
                 "W = CV^2",
                 "W = (1/2)C^2V"
             ],
-            "url": "https://denken-ou.com/riron-energy/"
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "T003",
+            "subject": "理論",
+            "question": "キルヒホッフの第一法則（電流則）とは？",
+            "answer": "回路の分岐点に流れ込む電流の和は、流れ出る電流の和に等しい",
+            "explanation": "電荷保存の法則に基づいています。",
+            "options": [
+                "流れ込む電流の和は流れ出る電流の和に等しい",
+                "電圧の和は0である",
+                "電力の和は一定である",
+                "抵抗の和は一定である"
+            ],
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "P001",
+            "subject": "電力",
+            "question": "汽力発電の熱サイクルで、最も基本的なサイクルは？",
+            "answer": "ランキンサイクル",
+            "explanation": "加熱、膨張、冷却、圧縮のプロセスを繰り返します。",
+            "options": [
+                "カルノーサイクル",
+                "ランキンサイクル",
+                "オットーサイクル",
+                "ディーゼルサイクル"
+            ],
+            "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
+        },
+        {
+            "id": "P002",
+            "subject": "電力",
+            "question": "送電線のフェランチ効果とは？",
+            "answer": "受電端電圧が送電端電圧より高くなる現象",
+            "explanation": "軽負荷時に充電電流の影響で発生します。",
+            "options": [
+                "電圧が下がる現象",
+                "電圧が上がる現象",
+                "電流が止まる現象",
+                "周波数が変わる現象"
+            ],
+            "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
+        },
+        {
+            "id": "M001",
+            "subject": "機械",
+            "question": "誘導電動機の同期速度Nsを求める式は？（P:極数, f:周波数）",
+            "answer": "Ns = 120f / P",
+            "explanation": "回転磁界の速度を決定する重要な式です。",
+            "options": [
+                "Ns = 120f / P",
+                "Ns = 60f / P",
+                "Ns = 120P / f",
+                "Ns = P / 120f"
+            ],
+            "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
+        },
+        {
+            "id": "M002",
+            "subject": "機械",
+            "question": "変圧器の鉄損の主な内訳は？",
+            "answer": "ヒステリシス損と渦電流損",
+            "explanation": "無負荷損の大部分を占めます。",
+            "options": [
+                "銅損と漂遊負荷損",
+                "ヒステリシス損と渦電流損",
+                "機械損と風損",
+                "誘電損と抵抗損"
+            ],
+            "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
+        },
+        {
+            "id": "L001",
+            "subject": "法規",
+            "question": "電気工事士法において、第一種電気工事士の免状交付を受けるための実務経験期間は？",
+            "answer": "3年以上（試験合格後の場合）",
+            "explanation": "法改正により現在は3年以上となっています。",
+            "options": [
+                "1年以上",
+                "3年以上",
+                "5年以上",
+                "10年以上"
+            ],
+            "url": "https://denken-ou.com/category/houki-mondaiichiran/"
         }
     ],
     "learning_content": [
         {
             "id": "L_T001",
             "subject": "理論",
-            "title": "直流回路の基礎",
-            "body": "直流回路における最も基本的な法則はオームの法則です。回路を流れる電流は電圧に比例し、抵抗に反比例します。",
-            "example": "100Vの電圧で10Ωの抵抗に流れる電流は I = 100/10 = 10A です。",
-            "url": "https://ele-king.biz/theory/t-ohm.html"
+            "title": "直流回路：直列と並列",
+            "body": "直列連接では抵抗の和が合成抵抗（R=R1+R2）になり、並列連接では逆数の和（1/R = 1/R1 + 1/R2）になります。",
+            "example": "2Ωと3Ωが直列なら5Ω。並列なら 1.2Ω です。",
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "L_T002",
+            "subject": "理論",
+            "title": "交流の基礎：実効値",
+            "body": "交流の正弦波において、最大値Vmと実効値Vの関係は V = Vm / √2 です。家庭用の100Vは実効値です。",
+            "example": "100Vの最大値は約141Vです。",
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "L_P001",
             "subject": "電力",
-            "title": "水力発電の原理",
-            "body": "水の持つ位置エネルギーを水車で回転エネルギーに変え、発電機を回して電気を得ます。出力 P = 9.8 × Q × H × η [kW] で表されます。",
-            "example": "流量Q=10m3/s, 有効落差H=100m, 効率η=80%の時の出力は P=9.8*10*100*0.8=7840kWです。",
-            "url": "https://www.tepco.co.jp/hydro/mechanism-j.html"
+            "title": "火力発電：ボイラの構成",
+            "body": "ボイラは、過熱器、再熱器、節炭器、空気予熱器などで構成され、熱効率を高める工夫がされています。",
+            "example": "節炭器は給水を予熱し、空気予熱器は燃焼空気を予熱します。",
+            "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
+        },
+        {
+            "id": "L_M001",
+            "subject": "機械",
+            "title": "直流機：起電力の公式",
+            "body": "直流発電機の起電力 E = (pZ/60a)ΦN [V] です。ここで p:極数, Z:導体数, a:並列回路数, Φ:磁束, N:回転数です。",
+            "example": "磁束Φを増やすか回転数Nを増やせば起電圧は上がります。",
+            "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
+        },
+        {
+            "id": "L_L001",
+            "subject": "法規",
+            "title": "電気事業法：保安規程",
+            "body": "事業用電気工作物の設置者は、自己責任において保安を確保するため、保安規程を定め、届け出る義務があります。",
+            "example": "自家用電気工作物（ビルや工場）のオーナーは保安規程を作る必要があります。",
+            "url": "https://denken-ou.com/category/houki-mondaiichiran/"
         }
     ],
     "formulas": [
@@ -54,7 +162,15 @@
             "title": "電気抵抗の公式",
             "formula": "R = ρ × (L / A)",
             "desc": "R:抵抗[Ω], ρ:抵抗率[Ωm], L:長さ[m], A:断面積[m2]",
-            "url": "https://denken-ou.com/riron-teiko/"
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "F_T002",
+            "subject": "理論",
+            "title": "静電エネルギー",
+            "formula": "W = (1/2)CV^2",
+            "desc": "W:エネルギー[J], C:静電容量[F], V:電圧[V]",
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "F_P001",
@@ -62,7 +178,15 @@
             "title": "三相交流の電力",
             "formula": "P = √3 × V × I × cosθ",
             "desc": "P:有効電力[W], V:線間電圧[V], I:線路電流[A], cosθ:力率",
-            "url": "https://denken-ou.com/denryoku-3phase/"
+            "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
+        },
+        {
+            "id": "F_M001",
+            "subject": "機械",
+            "title": "同期速度",
+            "formula": "Ns = 120f / P",
+            "desc": "Ns:同期速度[min-1], f:周波数[Hz], P:磁極数",
+            "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
         }
     ]
 }

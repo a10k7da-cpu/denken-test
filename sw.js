@@ -1,4 +1,4 @@
-const CACHE_NAME = 'denken3-v1';
+const CACHE_NAME = 'denken3-v3';
 const ASSETS = [
     './',
     './index.html',
