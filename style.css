@@ -1,0 +1,220 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --bg-dark: #1a1a1a;
+    --card-bg: #2c2c2c;
+    --text-color: #e0e0e0;
+    --accent-red: #e74c3c;
+    --navbar-bg: #2c3e50;
+    --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.navbar {
+    background-color: var(--navbar-bg);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.view {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.btn-primary,
+.btn-secondary {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Subject Grid */
+.subject-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.subject-card {
+    background-color: var(--card-bg);
+    border: 2px solid #444;
+    border-radius: 15px;
+    padding: 2rem 1rem;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.subject-card:active {
+    transform: scale(0.95);
+}
+
+/* Flashcard */
+.card-container {
+    perspective: 1000px;
+    margin-top: 2rem;
+}
+
+.card {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    font-size: 1.4rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background-color: #3d3d3d;
+}
+
+.card-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-easy {
+    flex: 1;
+    padding: 1rem;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-hard {
+    flex: 1;
+    padding: 1rem;
+    background: var(--accent-red);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Quiz Styles */
+.quiz-q {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-option {
+    background: var(--card-bg);
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 10px;
+    border: 1px solid #555;
+    cursor: pointer;
+}
+
+.quiz-option.correct {
+    background-color: #27ae60;
+    border-color: #2ecc71;
+}
+
+.quiz-option.wrong {
+    background-color: #c0392b;
+    border-color: #e74c3c;
+}
+
+.explanation {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #333;
+    border-radius: 10px;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    height: 8px;
+    background: #444;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+#progress-fill {
+    height: 100%;
+    background: var(--primary-color);
+    width: 0%;
+    transition: width 0.3s ease;
+}
