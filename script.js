@@ -1,10 +1,9 @@
 // --- 状態管理 ---
-let questions = [];
+let db = { questions: [], learning_content: [], formulas: [] };
 let currentSubject = "";
-let currentMode = ""; // 'flash' or 'quiz'
 let currentIndex = 0;
-let queue = [];
-let startTime = Date.now();
+let activeQueue = [];
+let currentMode = ""; // 'drill', 'learn', 'quiz', 'flash'
 
 // --- ユーティリティ ---
 const $ = (id) => document.getElementById(id);
@@ -13,43 +12,23 @@ const showView = (id) => {
     $(id).classList.remove('hidden');
 };
 
-// --- LocalStorage 管理 ---
-const STORAGE_KEY = "denken3_user_data";
+// --- LocalStorage ---
+const STORAGE_KEY = "denken3_plus_data";
 let userData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
-    history: {}, // { qid: { score, nextReview, intervals } }
-    streak: 0,
-    lastStudyDate: null,
-    totalTime: 0,
-    weakList: []
+    history: {}, streak: 0, totalTime: 0
 };
-
-function saveUserData() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(userData));
-    updateStats();
-}
 
 // --- データ読み込み ---
 async function init() {
     try {
         const res = await fetch('data.json');
-        questions = await res.json();
-        updateStats();
-    } catch (e) {
-        console.error("データの読み込みに失敗しました", e);
-    }
+        db = await res.json();
+    } catch (e) { console.error("Load failed", e); }
 }
 
-// --- 統計更新 ---
-function updateStats() {
-    $('streak-count').textContent = `🔥 ${userData.streak || 0}日`;
-    $('stat-time').textContent = `${Math.floor((userData.totalTime || 0) / 60)}h ${userData.totalTime % 60}m`;
+// --- Home 画面アクション ---
+$('nav-brand').onclick = () => showView('home-view');
 
-    const totalAnswered = Object.keys(userData.history).length;
-    const correctCount = Object.values(userData.history).filter(h => h.score >= 3).length;
-    $('stat-accuracy').textContent = totalAnswered ? `${Math.floor((correctCount / totalAnswered) * 100)}%` : '0%';
-}
-
-// --- 事件リスナー ---
 document.querySelectorAll('.subject-card').forEach(btn => {
     btn.onclick = () => {
         currentSubject = btn.dataset.subject;
@@ -62,53 +41,100 @@ document.querySelectorAll('.btn-back').forEach(btn => {
     btn.onclick = () => showView('home-view');
 });
 
-$('start-flashcard').onclick = () => startMode('flash');
-$('start-quiz').onclick = () => startMode('quiz');
+// --- 各モード開始 ---
+$('btn-infinite-drill').onclick = () => startDrill();
+$('btn-formula-book').onclick = () => showFormulas();
+$('start-learn').onclick = () => startLearnMode();
+$('start-quiz').onclick = () => startQuizMode();
+$('start-flashcard').onclick = () => startFlashcardMode();
 
-// --- モード開始 ---
-function startMode(mode) {
-    currentMode = mode;
+// 1. 無限ドリル (シャッフル & 制限なし)
+function startDrill() {
+    currentMode = 'quiz';
+    activeQueue = [...db.questions].sort(() => Math.random() - 0.5);
     currentIndex = 0;
-    // 該当科目の問題をフィルタリング
-    queue = questions.filter(q => q.subject === currentSubject);
-
     showView('learning-view');
-    if (mode === 'flash') {
-        $('flashcard-container').classList.remove('hidden');
-        $('quiz-container').classList.add('hidden');
-        renderFlashcard();
+    renderQuiz();
+}
+
+// 2. 学習モード (インプット中心)
+function startLearnMode() {
+    currentMode = 'learn';
+    activeQueue = db.learning_content.filter(l => l.subject === currentSubject);
+    if (activeQueue.length === 0) return alert("準備中です");
+    currentIndex = 0;
+    showView('learn-view');
+    renderLearnContent();
+}
+
+function renderLearnContent() {
+    const item = activeQueue[currentIndex];
+    $('learn-title').textContent = item.title;
+    $('learn-body').textContent = item.body;
+    $('learn-example').textContent = item.example;
+    $('learn-url').href = item.url || "#";
+    $('learn-url').classList.toggle('hidden', !item.url);
+}
+
+$('btn-learn-next').onclick = () => {
+    if (currentIndex < activeQueue.length - 1) {
+        currentIndex++;
+        renderLearnContent();
     } else {
-        $('flashcard-container').classList.add('hidden');
-        $('quiz-container').classList.remove('hidden');
-        renderQuiz();
+        alert("この科目の学習完了です！");
+        showView('home-view');
     }
-}
-
-// --- フラッシュカード ロジック ---
-function renderFlashcard() {
-    const q = queue[currentIndex];
-    $('card-q').textContent = q.question;
-    $('card-a').textContent = q.explanation;
-    $('main-card').classList.remove('is-flipped');
-    updateProgress();
-}
-
-$('main-card').onclick = () => {
-    $('main-card').classList.toggle('is-flipped');
 };
 
-document.querySelectorAll('.card-controls button').forEach(btn => {
-    btn.onclick = (e) => {
-        e.stopPropagation();
-        const score = parseInt(btn.dataset.score);
-        applySRS(queue[currentIndex].id, score);
-        nextQuestion();
+$('btn-learn-prev').onclick = () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        renderLearnContent();
+    }
+};
+
+// 3. 公式集
+function showFormulas(filter = "すべて") {
+    showView('formula-view');
+    const container = $('formula-list');
+    container.innerHTML = '';
+
+    const list = filter === "すべて" ? db.formulas : db.formulas.filter(f => f.subject === filter);
+
+    list.forEach(f => {
+        const card = document.createElement('div');
+        card.className = 'formula-card';
+        card.innerHTML = `
+            <h4>${f.title} (${f.subject})</h4>
+            <code>${f.formula}</code>
+            <p>${f.desc}</p>
+            ${f.url ? `<a href="${f.url}" target="_blank" class="small-link">詳しく見る</a>` : ''}
+        `;
+        container.appendChild(card);
+    });
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.onclick = () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        showFormulas(btn.dataset.filter);
     };
 });
 
-// --- クイズ ロジック ---
+// 4. クイズ/フラッシュカード (既存ロジックの調整)
+function startQuizMode() {
+    currentMode = 'quiz';
+    activeQueue = db.questions.filter(q => q.subject === currentSubject);
+    currentIndex = 0;
+    showView('learning-view');
+    $('quiz-container').classList.remove('hidden');
+    $('flashcard-container').classList.add('hidden');
+    renderQuiz();
+}
+
 function renderQuiz() {
-    const q = queue[currentIndex];
+    const q = activeQueue[currentIndex];
     $('quiz-q').textContent = q.question;
     $('quiz-options').innerHTML = '';
     $('quiz-explanation').classList.add('hidden');
@@ -117,101 +143,55 @@ function renderQuiz() {
         const div = document.createElement('div');
         div.className = 'quiz-option';
         div.textContent = opt;
-        div.onclick = () => checkAnswer(div, opt, q);
+        div.onclick = () => {
+            if (!$('quiz-explanation').classList.contains('hidden')) return;
+
+            if (opt === q.answer) {
+                div.classList.add('correct');
+            } else {
+                div.classList.add('wrong');
+                // 実際の実装ではここで苦手リストへの追加などを行う
+            }
+
+            $('explanation-text').textContent = q.explanation;
+            $('quiz-url').href = q.url || "#";
+            if (q.url) {
+                $('quiz-url').classList.remove('hidden');
+            } else {
+                $('quiz-url').classList.add('hidden');
+            }
+            $('quiz-explanation').classList.remove('hidden');
+        };
         $('quiz-options').appendChild(div);
     });
-    updateProgress();
 }
 
-function checkAnswer(el, selected, q) {
-    if (!$('quiz-explanation').classList.contains('hidden')) return;
-
-    if (selected === q.answer) {
-        el.classList.add('correct');
-        applySRS(q.id, 5);
-    } else {
-        el.classList.add('wrong');
-        applySRS(q.id, 1);
-        // 苦手リストに追加
-        if (!userData.weakList.includes(q.id)) userData.weakList.push(q.id);
-    }
-
-    $('explanation-text').textContent = q.explanation;
-    $('quiz-explanation').classList.remove('hidden');
-}
-
-$('btn-next').onclick = () => nextQuestion();
-
-// --- 共通進行管理 ---
-function nextQuestion() {
+$('btn-next').onclick = () => {
     currentIndex++;
-    if (currentIndex < queue.length) {
-        currentMode === 'flash' ? renderFlashcard() : renderQuiz();
+    if (currentIndex < activeQueue.length) {
+        renderQuiz();
     } else {
-        alert("本日の学習完了です！");
         showView('home-view');
-        updateStreak();
     }
-}
-
-function updateProgress() {
-    const percent = Math.floor((currentIndex / queue.length) * 100);
-    $('progress-fill').style.width = `${percent}%`;
-}
-
-// --- SRS (簡易) ---
-function applySRS(qid, score) {
-    if (!userData.history[qid]) {
-        userData.history[qid] = { interval: 1, nextReview: Date.now() };
-    }
-    const h = userData.history[qid];
-    if (score >= 3) {
-        h.interval *= 2; // 簡単なら間隔を倍に
-    } else {
-        h.interval = 1; // 苦手なら最初から
-    }
-    h.nextReview = Date.now() + h.interval * 24 * 60 * 60 * 1000;
-    saveUserData();
-}
-
-function updateStreak() {
-    const today = new Date().toDateString();
-    if (userData.lastStudyDate !== today) {
-        userData.streak++;
-        userData.lastStudyDate = today;
-        saveUserData();
-    }
-}
-
-// --- 今日の5問 ---
-$('btn-today-5').onclick = () => {
-    currentSubject = "今日の5問";
-    const daySeed = new Date().getDate();
-    // 簡易シャッフル
-    queue = questions.sort(() => 0.5 - (daySeed / 31)).slice(0, 5);
-    currentIndex = 0;
-    currentMode = 'quiz';
-    showView('learning-view');
-    $('flashcard-container').classList.add('hidden');
-    $('quiz-container').classList.remove('hidden');
-    renderQuiz();
 };
 
-// 起動
+function startFlashcardMode() {
+    currentMode = 'flash';
+    activeQueue = db.questions.filter(q => q.subject === currentSubject);
+    currentIndex = 0;
+    showView('learning-view');
+    $('quiz-container').classList.add('hidden');
+    $('flashcard-container').classList.remove('hidden');
+    renderFlashcard();
+}
+
+function renderFlashcard() {
+    const q = activeQueue[currentIndex];
+    $('card-q').textContent = q.question;
+    $('card-a').textContent = q.answer;
+    $('card-url').href = q.url || "#";
+    $('main-card').classList.remove('is-flipped');
+}
+
+// 初期化
 init();
-
-// --- 通知設定 (Service Worker 経由) ---
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').then(reg => {
-        console.log('SW registered');
-    });
-}
-
-function requestNotification() {
-    Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-            console.log('Notification permission granted');
-        }
-    });
-}
-window.addEventListener('load', requestNotification);

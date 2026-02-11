@@ -15,24 +15,22 @@
     <div id="app">
         <!-- ナビゲーションバー -->
         <nav class="navbar">
-            <div class="nav-title">⚡電験三種 極</div>
+            <div class="nav-title" id="nav-brand">⚡電験三種 極</div>
             <div class="nav-stats">
                 <span id="streak-count">🔥 0日</span>
-                <span id="total-progress">📊 0%</span>
             </div>
         </nav>
 
         <!-- メインメニュー -->
         <main id="home-view" class="view">
             <section class="hero">
-                <h2>隙間時間を合格に変える</h2>
-                <div class="today-special">
-                    <button id="btn-today-5" class="btn-primary">今日の5問に挑戦</button>
-                </div>
+                <h2>合格への最短ルート</h2>
+                <button id="btn-infinite-drill" class="btn-primary">無限ドリルに挑戦</button>
+                <button id="btn-formula-book" class="btn-info">重要公式集</button>
             </section>
 
-            <section class="科目選択">
-                <h3>科目を選択</h3>
+            <section class="subject-section">
+                <h3>科目別学習（インプット）</h3>
                 <div class="subject-grid">
                     <button class="subject-card" data-subject="理論">理論</button>
                     <button class="subject-card" data-subject="電力">電力</button>
@@ -41,7 +39,7 @@
                 </div>
             </section>
 
-            <section class="学習管理">
+            <section class="stats-section">
                 <h3>学習状況</h3>
                 <div class="stats-container">
                     <div class="stat-item">
@@ -53,28 +51,66 @@
                         <span id="stat-accuracy" class="stat-value">0%</span>
                     </div>
                 </div>
-                <button id="btn-weak-review" class="btn-secondary">苦手問題のみ復習</button>
             </section>
         </main>
 
-        <!-- モード選択 (フラッシュカード or 一問一答) -->
+        <!-- モード選択ビュー -->
         <div id="mode-select-view" class="view hidden">
             <button class="btn-back">← 戻る</button>
             <h2 id="selected-subject-title">科目名</h2>
             <div class="mode-options">
-                <button id="start-flashcard" class="mode-btn">
-                    <div class="icon">🎴</div>
-                    <div class="text">フラッシュカード<br><small>用語と定義を暗記</small></div>
+                <button id="start-learn" class="mode-btn">
+                    <div class="icon">📖</div>
+                    <div class="text">じっくり学習<br><small>解説と例題で学ぶ</small></div>
                 </button>
                 <button id="start-quiz" class="mode-btn">
                     <div class="icon">❓</div>
-                    <div class="text">一問一答（4択）<br><small>実践形式で解く</small></div>
+                    <div class="text">一問一答（4択）<br><small>理解度をテスト</small></div>
+                </button>
+                <button id="start-flashcard" class="mode-btn">
+                    <div class="icon">🎴</div>
+                    <div class="text">フラッシュカード<br><small>用語暗記</small></div>
                 </button>
             </div>
         </div>
 
-        <!-- 学習画面 -->
+        <!-- 学習（解説）ビュー -->
+        <div id="learn-view" class="view hidden">
+            <button class="btn-back">← 戻る</button>
+            <div class="content-box">
+                <h2 id="learn-title">解説タイトル</h2>
+                <div id="learn-body" class="scrollable">解説本文</div>
+                <div class="example-box">
+                    <strong>例題:</strong>
+                    <div id="learn-example">例題本文</div>
+                </div>
+                <div class="external-links">
+                    <a id="learn-url" href="#" target="_blank" class="btn-link">🌐 Webで詳しく調べる</a>
+                </div>
+            </div>
+            <div class="nav-controls">
+                <button id="btn-learn-prev" class="btn-secondary">前へ</button>
+                <button id="btn-learn-next" class="btn-primary">次へ</button>
+            </div>
+        </div>
+
+        <!-- 公式集ビュー -->
+        <div id="formula-view" class="view hidden">
+            <button class="btn-back">← 戻る</button>
+            <h2>重要公式集</h2>
+            <div class="filter-tabs">
+                <button class="tab-btn active" data-filter="すべて">全件</button>
+                <button class="tab-btn" data-filter="理論">理論</button>
+                <button class="tab-btn" data-filter="電力">電力</button>
+            </div>
+            <div id="formula-list" class="formula-list">
+                <!-- JSで動的生成 -->
+            </div>
+        </div>
+
+        <!-- クイズ/フラッシュカードビュー（既存） -->
         <div id="learning-view" class="view hidden">
+            <button class="btn-back">← 戻る</button>
             <div class="progress-bar-container">
                 <div id="progress-fill" style="width: 0%"></div>
             </div>
@@ -82,7 +118,10 @@
             <div id="flashcard-container" class="card-container hidden">
                 <div class="card" id="main-card">
                     <div class="card-front" id="card-q">問題</div>
-                    <div class="card-back" id="card-a">答え</div>
+                    <div class="card-back">
+                        <div id="card-a">答え</div>
+                        <a id="card-url" href="#" target="_blank" class="small-link">Web解説へ</a>
+                    </div>
                 </div>
                 <div class="card-controls">
                     <button class="btn-easy" data-score="3">分かった</button>
@@ -92,21 +131,14 @@
 
             <div id="quiz-container" class="quiz-container hidden">
                 <div class="quiz-q" id="quiz-q">問題文</div>
-                <div class="quiz-options" id="quiz-options">
-                    <!-- JSで動的生成 -->
-                </div>
+                <div class="quiz-options" id="quiz-options"></div>
                 <div id="quiz-explanation" class="explanation hidden">
-                    <div class="explanation-text" id="explanation-text">解説</div>
+                    <div id="explanation-text">解説</div>
+                    <a id="quiz-url" href="#" target="_blank" class="btn-link">🌐 Webで詳しく調べる</a>
                     <button id="btn-next" class="btn-primary">次へ</button>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- PWAインストール案内（必要に応じて表示） -->
-    <div id="install-prompt" class="prompt hidden">
-        <p>ホーム画面に追加して通知を受け取りましょう！</p>
-        <button id="btn-install">インストール</button>
     </div>
 
     <script src="script.js"></script>
