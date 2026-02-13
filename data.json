@@ -5,7 +5,7 @@
             "subject": "理論",
             "question": "オームの法則で、電圧V、電流I、抵抗Rの関係は？",
             "answer": "V = IR",
-            "explanation": "電圧は電流と抵抗の積に等しくなります。",
+            "explanation": "基本中の基本です。",
             "options": [
                 "V = IR",
                 "V = I/R",
@@ -45,301 +45,427 @@
         {
             "id": "T004",
             "subject": "理論",
-            "question": "ブリッジ回路の平衡条件（対辺の抵抗の積）は？",
-            "answer": "対角線上の抵抗の積が等しい",
-            "explanation": "検流計に電流が流れない状態です。",
+            "question": "ミルマンの定理が有効な回路構成は？",
+            "answer": "複数の電源が並列に接続された回路",
+            "explanation": "各枝の電圧とアドミタンスから端子電圧を一撃で求められます。",
             "options": [
-                "対角線上の抵抗の積が等しい",
-                "隣り合う抵抗の積が等しい",
-                "全ての抵抗が等しい",
-                "電圧が全て等しい"
+                "複数の電源が並列に接続された回路",
+                "単一の電源の直列回路",
+                "ブリッジ回路の不平衡時",
+                "交流の共振回路"
             ],
             "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "T005",
             "subject": "理論",
-            "question": "磁束密度B、電流I、長さL、角度θの導体にかかる力の大きさFは？",
-            "answer": "F = BIL sinθ",
-            "explanation": "フレミングの左手の法則に関連します。",
+            "question": "テブナンの定理で、等価電圧V0を求める方法は？",
+            "answer": "負荷を開放した時の端子電圧",
+            "explanation": "複雑な回路を一つの電圧源と抵抗に置き換えます。",
             "options": [
-                "F = BIL sinθ",
-                "F = BIL cosθ",
-                "F = B/IL",
-                "F = I/BL"
+                "負荷を開放した時の端子電圧",
+                "負荷を短絡した時の電流",
+                "全体の合成抵抗",
+                "電源電圧の平均値"
             ],
             "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "T006",
             "subject": "理論",
-            "question": "インダクタンスLのコイルに流れる電流Iがt秒間にΔI変化した時の誘導起電力eは？",
-            "answer": "e = -L(ΔI/Δt)",
-            "explanation": "レンツの法則により逆方向の起電力が発生します。",
+            "question": "正弦波交流において、実効値Vと平均値Vaの比（波形率）は？",
+            "answer": "1.11",
+            "explanation": "(π / 2√2) ≒ 1.11 となります。",
             "options": [
-                "e = -L(ΔI/Δt)",
-                "e = LΔt",
-                "e = L/I",
-                "e = I^2L"
+                "1.11",
+                "1.41",
+                "1.25",
+                "2.00"
             ],
             "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "T007",
             "subject": "理論",
-            "question": "正弦波交流の波高率（クレストファクタ）を求める式は？",
-            "answer": "最大値 / 実効値",
-            "explanation": "正弦波の場合は√2(1.41)になります。",
+            "question": "R-L直列回路の過渡現象で、時定数τを求める式は？",
+            "answer": "τ = L / R",
+            "explanation": "電流が最終値の約63.2%に達する時間です。",
             "options": [
-                "最大値 / 実効値",
-                "実効値 / 平均値",
-                "最大値 / 平均値",
-                "平均値 / 最大値"
+                "τ = L / R",
+                "τ = RC",
+                "τ = R / L",
+                "τ = 1 / RL"
             ],
             "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "T008",
             "subject": "理論",
-            "question": "交流回路のインピーダンスZにおいて、RとjXの合成は？",
-            "answer": "Z = R + jX",
-            "explanation": "複素数で表されます。",
+            "question": "R-C直列回路の過渡現象で、時定数τを求める式は？",
+            "answer": "τ = RC",
+            "explanation": "コンデンサの充電速度を決定します。",
             "options": [
-                "Z = R + jX",
-                "Z = R - jX",
-                "Z = RX",
-                "Z = R/X"
+                "τ = RC",
+                "τ = R / C",
+                "τ = C / R",
+                "τ = 1 / RC"
+            ],
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "T009",
+            "subject": "理論",
+            "question": "平行平板コンデンサの電界E[V/m]、電位V[V]、距離d[m]の関係は？",
+            "answer": "E = V / d",
+            "explanation": "一様な電界ではこの単純な形になります。",
+            "options": [
+                "E = V / d",
+                "E = Vd",
+                "E = d / V",
+                "E = V^2 / d"
+            ],
+            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
+        },
+        {
+            "id": "T010",
+            "subject": "理論",
+            "question": "三相平衡負荷における全電力Pを下式のどれで表すか？（V:線間電圧, I:線電流）",
+            "answer": "P = √3 VI cosθ",
+            "explanation": "線間電圧と線電流を用いる場合の公式です。",
+            "options": [
+                "P = √3 VI cosθ",
+                "P = 3 VI cosθ",
+                "P = VI cosθ",
+                "P = √2 VI cosθ"
             ],
             "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "P001",
             "subject": "電力",
-            "question": "汽力発電の熱サイクルで、再熱器を用いる目的は？",
-            "answer": "タービンの湿分減少と効率向上",
-            "explanation": "膨張途中の蒸気を再度加熱します。",
+            "question": "水力発電の比速度Nsを大きくする設計の効果は？",
+            "answer": "同じ等価条件で水車を小型・高速化できる",
+            "explanation": "高落差では小さく、低落差・大流量では大きく設計します。",
             "options": [
-                "タービンの湿分減少と効率向上",
-                "給水の加熱",
-                "空気の予熱",
-                "復水器の冷却"
+                "小型・高速化できる",
+                "大型・低速化できる",
+                "効率を100%にできる",
+                "損失をゼロにできる"
             ],
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
             "id": "P002",
             "subject": "電力",
-            "question": "水力発電の出力P[kW]、流量Q[m3/s]、落差H[m]、効率ηの関係は？",
-            "answer": "P = 9.8QHη",
-            "explanation": "重力加速度9.8を用います。",
+            "question": "新エネルギー発電のうち、出力変動が激しく系統安定への影響が大きいのは？",
+            "answer": "太陽光および風力発電",
+            "explanation": "天候に左右されるため、蓄電池等の対策が必要です。",
             "options": [
-                "P = 9.8QHη",
-                "P = QH/9.8",
-                "P = 1.2QHη",
-                "P = 10QH"
+                "太陽光および風力発電",
+                "地熱発電",
+                "バイオマス発電",
+                "小水力発電"
             ],
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
             "id": "P003",
             "subject": "電力",
-            "question": "電力系統のフェランチ効果が発生しやすい条件は？",
-            "answer": "軽負荷時の長距離送電線",
-            "explanation": "受電端の電圧が送電端より高くなります。",
+            "question": "送電線の電力損失率を1/4にしたい場合、送電電圧を何倍にするか？",
+            "answer": "2倍",
+            "explanation": "損失は電圧の2乗に反比例します（V^2に反比例）。",
             "options": [
-                "軽負荷時の長距離送電線",
-                "重負荷時の短距離送電線",
-                "故障発生時",
-                "落雷時"
+                "2倍",
+                "4倍",
+                "√2倍",
+                "1/2倍"
             ],
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
             "id": "P004",
             "subject": "電力",
-            "question": "中性点接地方式のうち、通信線への誘導障害が最も少ないのは？",
-            "answer": "消弧リアクトル接地方式",
-            "explanation": "地絡電流を制限します。",
+            "question": "変圧器の結線方式で、第3高調波を還流させて外部に出さないのは？",
+            "answer": "デルタ(Δ)結線",
+            "explanation": "相電圧の第3高調波が閉回路を回ります。",
             "options": [
-                "直接接地方式",
-                "消弧リアクトル接地方式",
-                "抵抗接地方式",
-                "非接地方式"
+                "デルタ(Δ)結線",
+                "スター(Y)結線",
+                "V結線",
+                "単相結線"
             ],
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
             "id": "P005",
             "subject": "電力",
-            "question": "変電所の避雷器の役割は？",
-            "answer": "異常電圧を制限し、制限電圧以下に抑える",
-            "explanation": "雷サージなどから機器を保護します。",
+            "question": "六ふっ化硫黄(SF6)ガスの特徴として間違っているのは？",
+            "answer": "空気より絶縁性能が低い",
+            "explanation": "空気の約3倍、消弧能力は100倍程度あります。",
             "options": [
-                "異常電圧を制限し、制限電圧以下に抑える",
-                "停電を防ぐ",
-                "周波数を安定させる",
-                "力率を改善する"
+                "空気より絶縁性能が低い",
+                "無色、無臭、無毒",
+                "地球温暖化係数が非常に高い",
+                "不燃性である"
+            ],
+            "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
+        },
+        {
+            "id": "P006",
+            "subject": "電力",
+            "question": "系統の力率改善のために使用される電力用コンデンサの接続箇所は？",
+            "answer": "負荷と並列",
+            "explanation": "遅れ力率を打ち消す進み無効電力を供給します。",
+            "options": [
+                "負荷と並列",
+                "負荷と直列",
+                "中性点と接地間",
+                "ブッシング部"
+            ],
+            "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
+        },
+        {
+            "id": "P007",
+            "subject": "電力",
+            "question": "送電線の塩害対策として有効なのは？",
+            "answer": "長幹がいしの使用やがいし洗浄",
+            "explanation": "絶縁低下を防ぐために清掃や特殊形状を採用します。",
+            "options": [
+                "長幹がいしの使用",
+                "電線を太くする",
+                "電圧を上げる",
+                "避雷器を増やす"
             ],
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
             "id": "M001",
             "subject": "機械",
-            "question": "同期電動機の同期速度Nsを求める式は？",
-            "answer": "Ns = 120f / P",
-            "explanation": "f:周波数、P:極数です。",
+            "question": "等価回路において、変圧器の最大効率が得られる条件は？",
+            "answer": "無負荷損（鉄損）と負荷損（銅損）が等しい時",
+            "explanation": "Pi = Pc の時に効率が最大になります。",
             "options": [
-                "Ns = 120f / P",
-                "Ns = 60f / P",
-                "Ns = 120P / f",
-                "Ns = P / 120f"
+                "鉄損と銅損が等しい時",
+                "二次電流がゼロの時",
+                "電圧が最大の時",
+                "周波数が高い時"
             ],
             "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
         },
         {
             "id": "M002",
             "subject": "機械",
-            "question": "変圧器の百分率インピーダンスに関わる損失は？",
-            "answer": "インピーダンスワット（全負荷銅損）",
-            "explanation": "定格電流を流した時の損失です。",
+            "question": "三相誘導電動機で、電源の2線を入れ替えるとどうなるか？",
+            "answer": "回転方向が逆転する",
+            "explanation": "相順が逆になり回転磁界が逆転します。",
             "options": [
-                "無負荷損",
-                "インピーダンスワット（全負荷銅損）",
-                "鉄損",
-                "漂遊負荷損"
+                "回転方向が逆転する",
+                "回転が止まる",
+                "回転速度が2倍になる",
+                "火花が出る"
             ],
             "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
         },
         {
             "id": "M003",
             "subject": "機械",
-            "question": "直流電動機の回転の向きを逆にする方法は？",
-            "answer": "界磁電流または電機子電流のどちらか一方を逆にする",
-            "explanation": "両方逆にすると向きは変わりません。",
+            "question": "同期発電機の「短絡比」が大きい場合のメリットは？",
+            "answer": "電圧変動率が小さく安定度が高い",
+            "explanation": "体積は大きくなりますが性能は安定します。",
             "options": [
-                "界磁電流または電機子電流のどちらか一方を逆にする",
-                "電源の極性を入れ替える",
-                "極数を増やす",
-                "回転数を上げる"
+                "電圧変動が小さく安定度が高い",
+                "小型化できる",
+                "効率が格段に上がる",
+                "安価に製造できる"
             ],
             "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
         },
         {
             "id": "M004",
             "subject": "機械",
-            "question": "パワーエレクトロニクスにおけるインバータの機能は？",
-            "answer": "直流を交流に変換する",
-            "explanation": "VVVF制御などに用いられます。",
+            "question": "界磁電流を一定とした直流他励電動機で、電機子電圧を2倍にすると回転数は？",
+            "answer": "約2倍になる",
+            "explanation": "N ∝ (V - IaRa) / Φ です。Φ一定ならVにほぼ比例します。",
             "options": [
-                "交流を直流に変換する",
-                "直流を交流に変換する",
-                "電圧を上げる",
-                "周波数を下げる"
+                "約2倍になる",
+                "半分になる",
+                "変わらない",
+                "4倍になる"
+            ],
+            "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
+        },
+        {
+            "id": "M005",
+            "subject": "機械",
+            "question": "誘導電動機の「すべりs」が1の状態とはどのような状態か？",
+            "answer": "静止（始動）状態",
+            "explanation": "Ns = N の時は s=0、N=0 の時は s=1 です。",
+            "options": [
+                "静止（始動）状態",
+                "同期速度での運転",
+                "無負荷運転",
+                "最大トルク発生時"
+            ],
+            "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
+        },
+        {
+            "id": "M006",
+            "subject": "機械",
+            "question": "パワー半導体素子のうち、電圧駆動型で高速スイッチングに適しているのは？",
+            "answer": "MOSFET",
+            "explanation": "小容量・高速。大容量はIGBTが主役です。",
+            "options": [
+                "MOSFET",
+                "サイリスタ",
+                "ダイオード",
+                "パワートランジスタ"
             ],
             "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
         },
         {
             "id": "L001",
             "subject": "法規",
-            "question": "電気工事士法において、第二種電気工事士ができる作業は？",
-            "answer": "一般用電気工作物の電気工事",
-            "explanation": "自家用は第一種が必要です。",
+            "question": "2023年改正：小規模事業用電気工作物の対象（太陽光）は？",
+            "answer": "10kW以上50kW未満",
+            "explanation": "新たに「小規模事業用」として事故報告等の義務が課されました。",
             "options": [
-                "一般用電気工作物の電気工事",
-                "全ての工作物の電気工事",
-                "500kW以上の工事",
-                "高圧受電設備の工事"
+                "10kW以上50kW未満",
+                "2kW以上10kW未満",
+                "50kW以上",
+                "1kW以上5kW未満"
             ],
-            "url": "https://denken-ou.com/category/houki-mondaiichiran/"
+            "url": "https://www.meti.go.jp/policy/safety_security/industrial_safety/sangyo/electric/detail/shokibo_taiyo.html"
         },
         {
             "id": "L002",
             "subject": "法規",
-            "question": "電気設備技術基準における「低圧」の区分（直流）は？",
-            "answer": "750V以下",
-            "explanation": "交流は600V以下です。",
+            "question": "電気工事士法で、認定電気工事従事者が従事できる範囲は？",
+            "answer": "自家用電気工作物（500kW未満）の簡易な電気工事（600V以下）",
+            "explanation": "第一種免許がなくても認定を受ければ一部可能です。",
             "options": [
-                "600V以下",
-                "750V以下",
-                "7000V以下",
-                "1000V以下"
+                "500kW未満の600V以下の工事",
+                "一般用工作物の工事全て",
+                "全ての自家用工作物の工事",
+                "電柱の架線工事"
+            ],
+            "url": "https://denken-ou.com/category/houki-mondaiichiran/"
+        },
+        {
+            "id": "L003",
+            "subject": "法規",
+            "question": "電気設備技術基準：電圧の区分において、交流「高圧」の範囲は？",
+            "answer": "600Vを超え7000V以下",
+            "explanation": "7000Vを超えると「特別高圧」になります。",
+            "options": [
+                "600Vを超え7000V以下",
+                "750Vを超え7000V以下",
+                "100Vを超え600V以下",
+                "600Vを超え3500V以下"
+            ],
+            "url": "https://denken-ou.com/category/houki-mondaiichiran/"
+        },
+        {
+            "id": "L004",
+            "subject": "法規",
+            "question": "法改正：2024年以降のJIS/IEC規格の最新化に伴う注意点は？",
+            "answer": "絶縁抵抗値や接地工事の考え方が国際規格に整合される",
+            "explanation": "「接地種別（A〜D）」から「保護接地」の考え方へ移行が進んでいます。",
+            "options": [
+                "国際規格への整合が進む",
+                "電圧の名称が変わる",
+                "全ての工事が不要になる",
+                "周波数が統一される"
+            ],
+            "url": "https://denken-ou.com/category/houki-mondaiichiran/"
+        },
+        {
+            "id": "L005",
+            "subject": "法規",
+            "question": "電気関係報告規則：事故報告が必要なのは事故発生から何時間以内か（速報）？",
+            "answer": "24時間以内",
+            "explanation": "速報は24時間、詳報は30日以内です。",
+            "options": [
+                "24時間以内",
+                "48時間以内",
+                "1週間以内",
+                "1時間以内"
             ],
             "url": "https://denken-ou.com/category/houki-mondaiichiran/"
         }
     ],
     "learning_content": [
         {
-            "id": "L_YOUTUBE_01",
+            "id": "L_T_ADVANCED",
             "subject": "理論",
-            "title": "【YouTube】理論の基礎（電験合格チャンネル）",
-            "body": "電験三種の理論科目は、電気の基礎知識である「直流回路」「静電気」「磁気」「交流回路」などが中心です。特にオームの法則とキルヒホッフの法則は全ての基礎になります。",
-            "example": "動画では黒板を使った丁寧な解説を視聴できます。",
+            "title": "理論の難所：過渡現象と複素数",
+            "body": "交流回路の計算を楽にするには複素数（j）の扱いに慣れることが必須です。また、過渡現象の時定数（L/R, RC）は「63.2%」という数字と一緒に覚えましょう。",
+            "example": "τ[s]経過後の電流 i(t) = I0(1 - e^-1) = 0.632I0 です。",
             "url": "https://www.youtube.com/playlist?list=PLW_SIsunmCly060G_wzE0nN3YJcTzHj07"
         },
         {
-            "id": "L_YOUTUBE_02",
-            "subject": "理論",
-            "title": "【YouTube】アニメでわかる電験（Aki塾長）",
-            "body": "数式だけでは理解しにくい電子の動きや磁界の広がりを、高品質なアニメーションで視覚的に理解することができます。",
-            "example": "コンデンサの充電・放電の仕組みをアニメーションで確認しましょう。",
-            "url": "https://www.youtube.com/channel/UCdgfcvbR_6Kz_Ibg0X8wY4A"
-        },
-        {
-            "id": "L_PAST_01",
+            "id": "L_P_HYDRO",
             "subject": "電力",
-            "title": "電力科目の頻出：送電ロスと力率改善",
-            "body": "電力系統では、負荷の力率が悪いと無効電流が増え、送電損失が増加します。これを改善するために電力用コンデンサを設置します。",
-            "example": "損失係数計算 problem 等が過去問によく出ます。",
+            "title": "電力の計算：水力と熱効率",
+            "body": "水力発電 P=9.8QHη と 揚水 P=9.8QH/(ηmηp) の違い（分母か分子か）を混同しないように。火力は1kWh=3600kJを知っていれば熱効率計算がスムーズです。",
+            "example": "総合熱効率 = (3600 * 発電力量) / (燃料消費量 * 発熱量) です。",
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
-            "id": "L_YOUTUBE_03",
+            "id": "L_M_FOUR",
             "subject": "機械",
-            "title": "【YouTube】四機（直流機・誘導機・同期機・変圧器）の解説",
-            "body": "機械科目の山場である四機の構造と原理について、動画で視覚的に学ぶことができます。",
-            "example": "回転磁界の発生原理を動画でイメージしましょう。",
+            "title": "機械の四機を攻略する",
+            "body": "直流機、誘導機、同期機、変圧器。これらは全て「等価回路」を描けるようになれば勝ちです。特に同期機のベクトル図は端子電圧Vと内部起電力Eの関係を理解しましょう。",
+            "example": "誘導機の二次銅損 P2c = s * P2 (sはすべり) は超頻出です。",
             "url": "https://www.youtube.com/playlist?list=PLW_SIsunmClxz8O2v0K5jT6B7S_Aog19p"
+        },
+        {
+            "id": "L_L_UPDATES",
+            "subject": "法規",
+            "title": "法規の最新トレンド：脱炭素と小規模再エネ",
+            "body": "近年の法改正で「小規模事業用」区分ができたこと、蓄電システム（蓄電所）が発電事業と同等に扱われるようになったことが重要です。",
+            "example": "太陽光10kW〜50kWは「小規模事業用」として義務が発生します。",
+            "url": "https://www.meti.go.jp/policy/safety_security/industrial_safety/sangyo/electric/index.html"
         }
     ],
     "formulas": [
         {
             "id": "F_T001",
             "subject": "理論",
-            "title": "合成抵抗（並列）",
-            "formula": "R = (R1 * R2) / (R1 + R2)",
-            "desc": "和分の積。2つの抵抗の並列計算に多用されます。",
+            "title": "ミルマンの定理",
+            "formula": "V = (Σ E * Y) / (Σ Y)",
+            "desc": "各枝の電圧EとアドミタンスYの積の和をアドミタンスの和で割る。",
             "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "F_T002",
             "subject": "理論",
-            "title": "コンデンサの静電容量",
-            "formula": "C = ε * (S / d)",
-            "desc": "ε:誘電率, S:面積, d:間隔。極板間の関係です。",
-            "url": "https://denken-ou.com/category/riron-mondaiichiran/"
-        },
-        {
-            "id": "F_T003",
-            "subject": "理論",
             "title": "共振周波数",
-            "formula": "f = 1 / (2π * √(LC))",
-            "desc": "L:インダクタンス, C:静電容量。直列・並列共振で共通です。",
+            "formula": "f = 1 / (2π√(LC))",
+            "desc": "誘導リアクタンスと容量リアクタンスが等しくなるときの周波数。",
             "url": "https://denken-ou.com/category/riron-mondaiichiran/"
         },
         {
             "id": "F_P001",
             "subject": "電力",
-            "title": "電圧降下（簡易式）",
-            "formula": "v = √3 * I * (R cosθ + X sinθ)",
-            "desc": "三相三線式の電圧降下を求める際に使用します。",
+            "title": "ベルジャンの式（経済的な電線断面積）",
+            "formula": "A = n * P",
+            "desc": "※実際にはコストと損失のバランスで決まりますが、概念として重要。",
             "url": "https://denken-ou.com/category/denryoku-mondaiichiran/"
         },
         {
             "id": "F_M001",
             "subject": "機械",
-            "title": "滑り(s)",
-            "formula": "s = (Ns - N) / Ns",
-            "desc": "Ns:同期速度, N:回転速度。誘導機の基礎です。",
+            "title": "変圧器の最大効率条件",
+            "formula": "鉄損(Pi) = 銅損(Pc)",
+            "desc": "無負荷損と負荷損が一致する負荷率で効率が最大になる。",
+            "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
+        },
+        {
+            "id": "F_M002",
+            "subject": "機械",
+            "title": "トルク(T)と出力(P)",
+            "formula": "T = P / (2πn/60) = 9.55 P / n",
+            "desc": "P:出力[W], n:回転数[min-1]、トルク[N・m]の関係。",
             "url": "https://denken-ou.com/category/kikai-mondaiichiran/"
         }
     ]
